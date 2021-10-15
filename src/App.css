@@ -74,12 +74,34 @@
   padding: 5px 0 20px 0;
 }
 
+.highlightRowBlue {
+  background-color: rgba(3, 174, 241, 0.5);
+}
+
 tr {
   color: #5b5757;
 }
 
 .results {
   padding-top: 15px;
+}
+
+.Restaurant {
+  margin: 3% 0;
+}
+
+.Restaurant ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Restaurant ul li {
+  list-style-type: none;
+}
+
+.Restaurant button {
+  margin-left: 5%;
 }
 
 .footer {

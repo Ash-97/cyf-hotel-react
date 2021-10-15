@@ -4,7 +4,7 @@ import SearchResultsTable from "./SearchResultsTable.js";
 const SearchResults = props => {
   return (
     <div className="table-responsive">
-      <table className="table table-striped">
+      <table className="table">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Id</th>
