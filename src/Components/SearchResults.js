@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchResultsTable from "./SearchResultsTable.js";
+import CustomerProfile from "./CustomerProfile.js";
 
 const SearchResults = props => {
+  const [customerProfileId, setCustomerProfileId] = useState("");
   return (
     <div className="table-responsive">
       <table className="table">
@@ -16,12 +18,19 @@ const SearchResults = props => {
             <th scope="col">Check-in Date</th>
             <th scope="col">Check-out Date</th>
             <th scope="col">Number of Nights</th>
+            <th scope="col" />
           </tr>
         </thead>
         <tbody>
-          <SearchResultsTable customerDetails={props.results} />
+          <SearchResultsTable
+            customerDetails={props.results}
+            setCustomerProfileId={setCustomerProfileId}
+          />
         </tbody>
       </table>
+      <div className="customerProfileContainer card">
+        <CustomerProfile id={customerProfileId} />
+      </div>
     </div>
   );
 };

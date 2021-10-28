@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 
-const SearchResultsTable = props => {
+const SearchResultsTable = ({ customerDetails, setCustomerProfileId }) => {
   const [selectedRow, setSelectedRow] = useState("");
   function highlightSelectedRow(passedKey) {
     setSelectedRow(passedKey === selectedRow ? "" : passedKey);
@@ -13,9 +13,15 @@ const SearchResultsTable = props => {
   //     e.target.parentElement.className = "";
   //   }
   // };
-  return props.customerDetails.map((customer, index) => {
+
+  return customerDetails.map((customer, index) => {
     const arrival = moment(customer.checkInDate);
     const departure = moment(customer.checkOutDate);
+
+    function customerProfileIdHandler() {
+      setCustomerProfileId(customer.id);
+    }
+
     return (
       <tr
         key={index}
@@ -32,6 +38,14 @@ const SearchResultsTable = props => {
         <td>{customer.checkOutDate}</td>
         <td>{departure.diff(arrival, "days")}</td>
         {/* <td>{moment.duration(departure.diff(arrival)).asDays()}</td> */}
+        <td onClick={event => event.stopPropagation()}>
+          <button
+            className="btn btn-primary"
+            onClick={customerProfileIdHandler}
+          >
+            Show Profile
+          </button>
+        </td>
       </tr>
     );
   });
